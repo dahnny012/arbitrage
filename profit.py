@@ -5,11 +5,12 @@ import sys
 from gemini import gemini
 
 
-print("How much BTC to arbitrage")
-if len(sys.argv) <= 0:
+
+if len(sys.argv) <= 1:
+    print("How much BTC to arbitrage")
     btc = float(input())
 else: 
-    btc = sys.argv[1]
+    btc = float(sys.argv[1])
 
 # clients
 public_bitgrail = bitgrail.Client("","")
