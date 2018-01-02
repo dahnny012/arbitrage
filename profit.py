@@ -4,8 +4,6 @@ import bittrex
 import sys
 from gemini import gemini
 
-
-
 if len(sys.argv) <= 1:
     print("How much BTC to arbitrage")
     btc = float(input())

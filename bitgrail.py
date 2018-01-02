@@ -26,10 +26,11 @@ class Client:
         }
         return requests.post("https://bitgrail.com/api/v1/withdrawshistory", data=params, headers=headers)
 
-    def last_price(self, ticker):
-            api_url = "https://bitgrail.com/api/v1/{0}/ticker".format(ticker)
-            r1 = requests.get(api_url)
-            return float(r1.json()['response']['last'])
+    def last_price(self, ticker, date=None):
+        api_url = "https://bitgrail.com/api/v1/{0}/ticker".format(ticker)
+        r1 = requests.get(api_url)
+        return float(r1.json()['response']['last'])
+
         
 
     def withdraw_history(self, coin):
@@ -37,7 +38,7 @@ class Client:
             'coin': coin,
             'nonce': self.nonce(),
         }
-        data =  self.execute(params)
-        parsed = json.dumps(data.json(), indent=4, sort_keys=True)
+        data =  self.execute(params).json()
+        parsed = json.dumps(data, indent=4, sort_keys=True)
         print(parsed)
         return data
